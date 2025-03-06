@@ -7,7 +7,8 @@ import {UiComponentsModule} from './ui-components/ui-components.module';
   selector: 'app-root',
   imports: [RouterOutlet, UiComponentsModule],
   templateUrl: './app.component.html',
-  styleUrl: './app.component.css'
+  styleUrl: './app.component.css',
+  standalone: true
 })
 export class AppComponent {
   title = 'bizAngular';
