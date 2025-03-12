@@ -1,7 +1,7 @@
 import {Component, input, OnInit, signal} from '@angular/core';
 import {BusinessService} from '../../businessService/business-service';
 import {businessRuleParser} from '../../businessRules/businessRuleEngine';
-import {ButtonAccessibilityProps, ButtonUiProps} from '../../businessRules/busineeRuleTypes';
+import {BusinessRuleTypes, ButtonAccessibilityProps, ButtonUiProps} from '../../businessRules/busineeRuleTypes';
 
 @Component({
   selector: 'app-ui-button',
@@ -22,13 +22,12 @@ export class UiButtonComponent implements OnInit {
   accessibilityProps = input<ButtonAccessibilityProps>(); // InputSignal<string>
   uiProps = input.required<ButtonUiProps>(); // InputSignal<string>
 
-  businessRuleProps = input<ButtonUiProps>();
+  businessRuleProps = input.required<BusinessRuleTypes>();
 
-  constructor(private bizService: BusinessService) {
-  }
+
   ngOnInit(){(
     console.log(this.uiProps().uiProps.text));
-    this.enabled.set(businessRuleParser(this.bizService.getConfig()));
+    this.enabled.set(businessRuleParser(this.businessRuleProps().businessRules));
   }
 
 

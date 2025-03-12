@@ -2,7 +2,8 @@ import { Component } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
 import {UiButtonComponent} from './ui-components/ui-button/ui-button.component';
 import {UiComponentsModule} from './ui-components/ui-components.module';
-import {ButtonUiProps} from './businessRules/busineeRuleTypes';
+import {businessRule, BusinessRuleTypes, ButtonUiProps} from './businessRules/busineeRuleTypes';
+import {BusinessService} from './businessService/business-service';
 
 @Component({
   selector: 'app-root',
@@ -25,5 +26,10 @@ export class AppComponent {
       disabled:"#ada6a9"
     },
   };
-  uiProps: ButtonUiProps= {uiProps:{text: "disabled button example", theme:this.theme}}
+  uiProps: ButtonUiProps= {uiProps:{text: "disabled button example", theme:this.theme}};
+  businessRuleExample: BusinessRuleTypes;
+  constructor(private bizService: BusinessService) {
+    this.businessRuleExample={businessRules:bizService.getConfig()}
+
+  }
 }

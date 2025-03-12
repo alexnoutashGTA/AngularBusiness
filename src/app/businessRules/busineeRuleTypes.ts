@@ -1,4 +1,4 @@
-type BusinessRuleTypes = {
+export type BusinessRuleTypes = {
   businessRules: businessRule[]
 };
 
