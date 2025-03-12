@@ -5,10 +5,7 @@ function oredRules(bizFields:fieldNameType) {
 }
 
 function andedRule(bizFields:fieldNameType) {
-  console.log("indec"+bizFields.findIndex(filed=>filed[1]===false))
-  console.log( bizFields.findIndex(filed=>filed[1]===false) ==-1);
   return bizFields.findIndex(filed=>filed[1]===false) ==-1;
-
 }
 
 export function businessRuleParser(bizRules:businessRule[]){

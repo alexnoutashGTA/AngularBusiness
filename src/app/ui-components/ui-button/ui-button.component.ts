@@ -1,6 +1,7 @@
-import {Component, OnInit, signal} from '@angular/core';
+import {Component, input, OnInit, signal} from '@angular/core';
 import {BusinessService} from '../../businessService/business-service';
 import {businessRuleParser} from '../../businessRules/businessRuleEngine';
+import {ButtonAccessibilityProps, ButtonUiProps} from '../../businessRules/busineeRuleTypes';
 
 @Component({
   selector: 'app-ui-button',
@@ -9,18 +10,24 @@ import {businessRuleParser} from '../../businessRules/businessRuleEngine';
     @if (enabled()) {
     <button>enabled</button>
     }
-    @else{<button>disabled</button>}
+    @else{<button disabled>{{uiProps().uiProps.text}}</button>}
   `,
   styleUrl: './ui-button.component.css'
 })
+
 export class UiButtonComponent implements OnInit {
 
    enabled = signal(false);
-   test=true;
+
+  accessibilityProps = input<ButtonAccessibilityProps>(); // InputSignal<string>
+  uiProps = input.required<ButtonUiProps>(); // InputSignal<string>
+
+  businessRuleProps = input<ButtonUiProps>();
 
   constructor(private bizService: BusinessService) {
   }
-  ngOnInit(){
+  ngOnInit(){(
+    console.log(this.uiProps().uiProps.text));
     this.enabled.set(businessRuleParser(this.bizService.getConfig()));
   }
 

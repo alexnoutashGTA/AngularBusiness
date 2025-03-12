@@ -9,7 +9,7 @@ export type businessRule = {
   filedNames: fieldNameType
 };
 
-type ButtonAccessibilityProps ={
+export type ButtonAccessibilityProps ={
   accProps: {
     name: string
   }
@@ -19,15 +19,12 @@ type ButtonAccessibilityProps ={
 // This approach leads developers to provide content parameter as parameter, perhaps retrived
 // from a CMS (contentful etc.)
 // One parameter and a theme is included in this type as an example
-type ButtonUiProps = {
+export type ButtonUiProps = {
   uiProps: {
     text: string,
     theme: object
   }
 }
 
-// Overall props include business rules needed for forms as well
-type ButtonProps = ButtonAccessibilityProps & ButtonUiProps & BusinessRuleTypes;
 
 
-export default BusinessRuleTypes
